@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     getList () {
-      axios.get('company.json').then(respons => this.list = respons.data)
+      axios.get('company.json').then(respons => { this.list = respons.data })
     }
   }
 }
@@ -49,9 +49,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  .informations {
-
-  }
   .item {
     padding: 14px;
     border-bottom: 1px solid #e8e8e8;

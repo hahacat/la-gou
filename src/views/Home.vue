@@ -1,7 +1,14 @@
 <template>
   <div class="home">
-    <div class="user-info">
+    <div class="user-info" v-if="isLogin">
       <span class="info">10秒钟定制职位</span>
+      <router-link class="go" to="/login">
+        <span class="icon"></span>
+        <span class="text">去登录</span>
+      </router-link>
+    </div>
+    <div class="user-info" v-else>
+      <span class="info">前端开发/北京/没有要求/没有要求</span>
       <router-link class="go" to="/user">
         <span class="icon"></span>
         <span class="text">编辑</span>
@@ -17,6 +24,11 @@ import HelloWorld from '@/components/index/HelloWorld.vue'
 
 export default {
   name: 'home',
+  data () {
+    return {
+      isLogin: true
+    }
+  },
   components: {
     HelloWorld
   }

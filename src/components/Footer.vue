@@ -60,6 +60,7 @@ export default {
     .icon {
       width: 17px;
       height: 17px;
+      margin-right: 3px;
     }
   }
   .to-home {
@@ -87,25 +88,22 @@ export default {
     .router-link-active {
       .icon {
         background: url(../assets/images/home-active.png);
-      } 
+      }
     }
-    
   }
   .to-search {
     .router-link-active {
       .icon {
-        background: url(../assets/images/home-active.png);
-      } 
+        background: url(../assets/images/search-active.png);
+      }
     }
-    
   }
   .to-mine {
     .router-link-active {
       .icon {
-        background: url(../assets/images/home-active.png);
-      } 
+        background: url(../assets/images/mine-active.png);
+      }
     }
-    
   }
 }
 </style>
