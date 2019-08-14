@@ -23,7 +23,7 @@ export default {
     padding: 0.3rem;
     box-sizing: border-box;
     width: 100%;
-    height: 100%;
+    // height: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -50,6 +50,9 @@ export default {
       flex-direction: column;
       justify-content: flex-start;
       width: 100%;
+      input::placeholder {
+        color: #ccc;
+      }
       .user-input {
         box-sizing: border-box;
         padding: 0.1rem 0;

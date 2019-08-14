@@ -25,8 +25,11 @@ import HelloWorld from '@/components/index/HelloWorld.vue'
 export default {
   name: 'home',
   data () {
-    return {
-      isLogin: true
+    return {}
+  },
+  computed: {
+    isLogin () {
+      return this.$store.state.isLogin
     }
   },
   components: {

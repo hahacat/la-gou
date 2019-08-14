@@ -7,7 +7,7 @@
       </router-link>
     </div>
     <div class="footer-link to-search">
-      <router-link to="/about" class="link">
+      <router-link to="/search" class="link">
         <span class="icon"></span>
         <span class="text">搜索</span>
       </router-link>
