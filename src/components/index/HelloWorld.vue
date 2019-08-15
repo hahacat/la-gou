@@ -1,7 +1,7 @@
 <template>
   <div class="content">
-    <ul class="informations">
-      <li class="item" v-for="item in list" :key="item.id">
+    <ul class="informations" ref="items">
+      <li class="item" v-for="(item, index) in list" :key="index">
         <a href="javascript:;" class="item-link">
           <img :src="item.imgSrc" alt="" class="item-logo">
           <div class="item-desc">
@@ -14,7 +14,8 @@
           </div>
         </a>
       </li>
-      <li class="get-more">加载更多</li>
+      <li class="no-more" v-show="ifTotal">没有更多了</li>
+      <li class="get-more" @click="getMore" v-show="!ifTotal">加载更多</li>
     </ul>
     <aside class="copyright">
       <p>©2015 lagou.com, all right reserved </p>
@@ -33,7 +34,10 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      list: []
+      list: [],
+      lists: [],
+      singleNum: 0,
+      ifTotal: false
     }
   },
   created () {
@@ -41,7 +45,32 @@ export default {
   },
   methods: {
     getList () {
-      axios.get('company.json').then(respons => { this.list = respons.data })
+      var height = document.documentElement.clientHeight || document.body.height
+      var h = 90
+      this.singleNum = Math.floor(height / h)
+      axios.get('company.json').then(respons => { 
+        this.lists = respons.data
+        if (this.lists.length <= this.singleNum) {
+          this.ifTotal = true
+        }
+        for (let i = 0; i < this.singleNum; i++) {
+          this.list.push(respons.data[i])
+        }
+      })
+    },
+    getMore () {
+      let len = this.list.length
+      let t = this.lists.length - len
+      if (t >= this.singleNum) {
+        for (let i = 0; i < this.singleNum; i++) {console.log('a')
+          this.list.push(this.lists[len + i])
+        }
+      } else if (t < this.singleNum && t > 0) { console.log('b')
+        for (let i = 0; i < t; i++) {
+          this.list.push(this.lists[len + i])
+        }
+        this.ifTotal = true
+      }
     }
   }
 }
@@ -97,7 +126,7 @@ export default {
       }
     }
   }
-  .get-more {
+  .get-more, .no-more {
     height: 50px;
     line-height: 50px;
     text-align: center;

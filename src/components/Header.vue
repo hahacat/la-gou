@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" id="header">
     <a href="javascript:;" class="back" @click="goBack">
       <span class="icon"></span>
     </a>
