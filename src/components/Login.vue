@@ -9,6 +9,9 @@
       <input type="text" placeholder="请输入密码" class="user-input user-password">
       <input type="submit" value="登录" class="user-submit">
     </form>
+    <div class="change-login">
+      <span class="text">手机号登录</span>
+    </div>
   </section>
 </template>
 
@@ -23,12 +26,20 @@ export default {
     padding: 0.3rem;
     box-sizing: border-box;
     width: 100%;
-    // height: 100%;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     background: #fff;
     z-index: 11;
+    .change-login {
+      position: absolute;
+      bottom: 0.3rem;
+      .text {
+        font-size: 0.14rem;
+        color: #00b38a;
+      }
+    }
     header {
       line-height: 0.26rem;
       display: flex;

@@ -9,7 +9,7 @@
         <p class="user-name">张三丰</p>
       </div>
       <div class="nologin" v-else>
-        <a href="javascript:;" class="loginbut">登录/注册</a>
+        <router-link to="/login" class="loginbut" >登录/注册</router-link>
       </div>
       <div class="buttons">
         <a href="javascript:;" class="button">投递</a>

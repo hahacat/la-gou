@@ -48,7 +48,7 @@ export default {
       var height = document.documentElement.clientHeight || document.body.height
       var h = 90
       this.singleNum = Math.floor(height / h)
-      axios.get('company.json').then(respons => { 
+      axios.get('company.json').then(respons => {
         this.lists = respons.data
         if (this.lists.length <= this.singleNum) {
           this.ifTotal = true
@@ -62,10 +62,10 @@ export default {
       let len = this.list.length
       let t = this.lists.length - len
       if (t >= this.singleNum) {
-        for (let i = 0; i < this.singleNum; i++) {console.log('a')
+        for (let i = 0; i < this.singleNum; i++) {
           this.list.push(this.lists[len + i])
         }
-      } else if (t < this.singleNum && t > 0) { console.log('b')
+      } else if (t < this.singleNum && t > 0) {
         for (let i = 0; i < t; i++) {
           this.list.push(this.lists[len + i])
         }

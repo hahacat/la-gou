@@ -1,0 +1,188 @@
+[
+  {
+    "id": "00001",
+    "hot": false,
+    "code": "A",
+    "name": "澳门特别行政区"
+  },
+  {
+    "id": "00002",
+    "hot": false,
+    "code": "A",
+    "name": "安庆"
+  },
+  {
+    "id": "00003",
+    "hot": true,
+    "code": "B",
+    "name": "北京"
+  },
+  {
+    "id": "00004",
+    "hot": true,
+    "code": "C",
+    "name": "成都"
+  },
+  {
+    "id": "00005",
+    "hot": true,
+    "code": "C",
+    "name": "长沙"
+  },
+  {
+    "id": "00006",
+    "hot": false,
+    "code": "D",
+    "name": "大连"
+  },
+  {
+    "id": "00007",
+    "hot": false,
+    "code": "F",
+    "name": "福州"
+  },
+  {
+    "id": "00008",
+    "hot": true,
+    "code": "G",
+    "name": "广州"
+  },
+  {
+    "id": "00009",
+    "hot": false,
+    "code": "H",
+    "name": "杭州"
+  },
+  {
+    "id": "00010",
+    "hot": false,
+    "code": "J",
+    "name": "吉安"
+  },
+  {
+    "id": "00011",
+    "hot": false,
+    "code": "J",
+    "name": "济南"
+  },
+  {
+    "id": "00012",
+    "hot": false,
+    "code": "K",
+    "name": "开封"
+  },
+  {
+    "id": "00013",
+    "hot": false,
+    "code": "K",
+    "name": "昆明"
+  },
+  {
+    "id": "00014",
+    "hot": false,
+    "code": "L",
+    "name": "洛阳"
+  },
+  {
+    "id": "00015",
+    "hot": false,
+    "code": "M",
+    "name": "绵阳"
+  },
+  {
+    "id": "00016",
+    "hot": false,
+    "code": "N",
+    "name": "南昌"
+  },
+  {
+    "id": "00017",
+    "hot": false,
+    "code": "N",
+    "name": "南京"
+  },
+  {
+    "id": "00018",
+    "hot": false,
+    "code": "P",
+    "name": "平顶山"
+  },
+  {
+    "id": "00019",
+    "hot": false,
+    "code": "Q",
+    "name": "青岛"
+  },
+  {
+    "id": "00020",
+    "hot": true,
+    "code": "S",
+    "name": "上海"
+  },
+  {
+    "id": "00021",
+    "hot": false,
+    "code": "S",
+    "name": "石家庄"
+  },
+  {
+    "id": "00022",
+    "hot": false,
+    "code": "S",
+    "name": "沈阳"
+  },
+  {
+    "id": "00023",
+    "hot": true,
+    "code": "S",
+    "name": "深圳"
+  },
+  {
+    "id": "00024",
+    "hot": false,
+    "code": "T",
+    "name": "天津"
+  },
+  {
+    "id": "00025",
+    "hot": false,
+    "code": "T",
+    "name": "唐山"
+  },
+  {
+    "id": "00026",
+    "hot": false,
+    "code": "T",
+    "name": "太原"
+  },
+  {
+    "id": "00027",
+    "hot": false,
+    "code": "W",
+    "name": "武汉"
+  },
+  {
+    "id": "00028",
+    "hot": false,
+    "code": "X",
+    "name": "西安"
+  },
+  {
+    "id": "00029",
+    "hot": false,
+    "code": "Y",
+    "name": "运城"
+  },
+  {
+    "id": "00030",
+    "hot": false,
+    "code": "Z",
+    "name": "张家口"
+  },
+  {
+    "id": "00031",
+    "hot": false,
+    "code": "Z",
+    "name": "郑州"
+  }
+]

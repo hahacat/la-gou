@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="user-info" v-if="isLogin">
+    <div class="user-info" v-if="!isLogin">
       <span class="info">10秒钟定制职位</span>
       <router-link class="go" to="/login">
         <span class="icon"></span>
@@ -31,6 +31,9 @@ export default {
     isLogin () {
       return this.$store.state.isLogin
     }
+  },
+  created () {
+    console.log(this.isLogin)
   },
   components: {
     HelloWorld

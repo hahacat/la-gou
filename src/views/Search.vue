@@ -2,7 +2,7 @@
   <div class="search">
     <div class="linputer" v-show="!ifCityListShow">
       <div class="lbutton" @click="cityListShow">
-        <span class="city">全国</span>
+        <span class="city">{{currentCity}}</span>
         <span class="cityicon"></span>
       </div>
       <div class="rinputer">
@@ -16,123 +16,44 @@
       <div class="fulldialog-content">
         <h2 class="pop-title">热门城市</h2>
         <table cellpadding="0" class="citylist">
-          <tr>
-            <td>北京</td>
-            <td>上海</td>
-            <td>广州</td>
-          </tr>
-          <tr>
-            <td>深圳</td>
-            <td>成都</td>
-            <td>杭州</td>
+          <tr v-for="(item, index) in hotCity" :key="index">
+            <td v-for="item in item" :key="item.id" @click="setCurrentCity(item.name)">{{item.name}}</td>
           </tr>
         </table>
         <h2 class="pop-title">ABCDEF</h2>
         <table cellpadding="0" class="citylist">
-          <tr>
-            <td>澳门特别行政区</td>
-            <td>安庆</td>
-            <td>保定</td>
-          </tr>
-          <tr>
-            <td>沧州</td>
-            <td>大庆</td>
-            <td>鄂尔多斯</td>
-          </tr>
-          <tr>
-            <td>长春</td>
-            <td>成都</td>
-            <td>重庆</td>
+          <tr v-for="(item, index) in cityLists1" :key="index">
+            <td v-for="item in item" :key="item.id" @click="setCurrentCity(item.name)">{{item.name}}</td>
           </tr>
         </table>
         <h2 class="pop-title">GHIJ</h2>
         <table cellpadding="0" class="citylist">
-          <tr>
-            <td>澳门特别行政区</td>
-            <td>安庆</td>
-            <td>保定</td>
-          </tr>
-          <tr>
-            <td>沧州</td>
-            <td>大庆</td>
-            <td>鄂尔多斯</td>
-          </tr>
-          <tr>
-            <td>长春</td>
-            <td>成都</td>
-            <td>重庆</td>
+          <tr v-for="(item, index) in cityLists2" :key="index">
+            <td v-for="item in item" :key="item.id" @click="setCurrentCity(item.name)">{{item.name}}</td>
           </tr>
         </table>
         <h2 class="pop-title">KLMN</h2>
         <table cellpadding="0" class="citylist">
-          <tr>
-            <td>澳门特别行政区</td>
-            <td>安庆</td>
-            <td>保定</td>
-          </tr>
-          <tr>
-            <td>沧州</td>
-            <td>大庆</td>
-            <td>鄂尔多斯</td>
-          </tr>
-          <tr>
-            <td>长春</td>
-            <td>成都</td>
-            <td>重庆</td>
+          <tr v-for="(item, index) in cityLists3" :key="index">
+            <td v-for="item in item" :key="item.id" @click="setCurrentCity(item.name)">{{item.name}}</td>
           </tr>
         </table>
         <h2 class="pop-title">OPQR</h2>
         <table cellpadding="0" class="citylist">
-          <tr>
-            <td>澳门特别行政区</td>
-            <td>安庆</td>
-            <td>保定</td>
-          </tr>
-          <tr>
-            <td>沧州</td>
-            <td>大庆</td>
-            <td>鄂尔多斯</td>
-          </tr>
-          <tr>
-            <td>长春</td>
-            <td>成都</td>
-            <td>重庆</td>
+          <tr v-for="(item, index) in cityLists4" :key="index">
+            <td v-for="item in item" :key="item.id" @click="setCurrentCity(item.name)">{{item.name}}</td>
           </tr>
         </table>
         <h2 class="pop-title">STUV</h2>
         <table cellpadding="0" class="citylist">
-          <tr>
-            <td>澳门特别行政区</td>
-            <td>安庆</td>
-            <td>保定</td>
-          </tr>
-          <tr>
-            <td>沧州</td>
-            <td>大庆</td>
-            <td>鄂尔多斯</td>
-          </tr>
-          <tr>
-            <td>长春</td>
-            <td>成都</td>
-            <td>重庆</td>
+          <tr v-for="(item, index) in cityLists5" :key="index">
+            <td v-for="item in item" :key="item.id" @click="setCurrentCity(item.name)">{{item.name}}</td>
           </tr>
         </table>
         <h2 class="pop-title">WXYZ</h2>
         <table cellpadding="0" class="citylist">
-          <tr>
-            <td>澳门特别行政区</td>
-            <td>安庆</td>
-            <td>保定</td>
-          </tr>
-          <tr>
-            <td>沧州</td>
-            <td>大庆</td>
-            <td>鄂尔多斯</td>
-          </tr>
-          <tr>
-            <td>长春</td>
-            <td>成都</td>
-            <td>重庆</td>
+          <tr v-for="(item, index) in cityLists6" :key="index">
+            <td v-for="item in item" :key="item.id" @click="setCurrentCity(item.name)">{{item.name}}</td>
           </tr>
         </table>
       </div>
@@ -141,18 +62,77 @@
 </template>
 
 <script>
-
+import axiox from 'axios'
 export default {
   name: 'search',
   data () {
     return {
-      ifCityListShow: false
+      ifCityListShow: false,
+      currentCity: '全国',
+      hotCity: [],
+      cityLists1: [],
+      cityLists2: [],
+      cityLists3: [],
+      cityLists4: [],
+      cityLists5: [],
+      cityLists6: []
     }
   },
   methods: {
     cityListShow () {
       this.ifCityListShow = true
+    },
+    getNewArr (arr, size) {
+      let length = arr.length
+      if (!length || !size || size < 1) {
+        return []
+      }
+      let result = new Array(Math.ceil(length / size))
+      let index = 0
+      let resIndex = 0
+      while(index < length) {
+        result[resIndex++] = arr.slice(index, (index += size))
+      }
+      return result
+    },
+    getCityLists () {
+      axiox.get('citylists.json').then((respons) => {
+        let cityLists = respons.data
+        let hotCity = [], cityLists1 = [],  cityLists2 = [], cityLists4 = [], cityLists3 = [], cityLists5 = [], cityLists6 = []
+        for (let i = 0; i < cityLists.length; i++) {
+          if (cityLists[i].hot) {
+            hotCity.push(cityLists[i])
+          }
+          if (cityLists[i].code.toUpperCase() <= "F") {
+            cityLists1.push(cityLists[i])
+          } else if (cityLists[i].code.toUpperCase() <= "J") {
+            cityLists2.push(cityLists[i])
+          } else if (cityLists[i].code.toUpperCase() <= "N") {
+            cityLists3.push(cityLists[i])
+          } else if (cityLists[i].code.toUpperCase() <= "R") {
+            cityLists4.push(cityLists[i])
+          } else if (cityLists[i].code.toUpperCase() <= "V") {
+            cityLists5.push(cityLists[i])
+          } else {
+            cityLists6.push(cityLists[i])
+          }
+        }
+        this.hotCity = this.getNewArr(hotCity, 3)
+        this.cityLists6 = this.getNewArr(cityLists6, 3)
+        this.cityLists5 = this.getNewArr(cityLists5, 3)
+        this.cityLists4 = this.getNewArr(cityLists4, 3)
+        this.cityLists3 = this.getNewArr(cityLists3, 3)
+        this.cityLists2 = this.getNewArr(cityLists2, 3)
+        this.cityLists1 = this.getNewArr(cityLists1, 3)
+      })
+    },
+    setCurrentCity (cityName) {
+      this.currentCity = cityName
+      this.ifCityListShow = false
     }
+  },
+  created () {
+    this.getCityLists()
   }
 }
 </script>
@@ -189,12 +169,17 @@ export default {
     .lbutton {
       width: 88px;
       height: 45px;
-      line-height: 45px;
       font-size: 0.16rem;
       display: flex;
       justify-content: center;
       align-items: center;
       border-right: $border;
+      .city {
+        max-width: 70px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
       .cityicon {
         width: 15px;
         height: 8px;
