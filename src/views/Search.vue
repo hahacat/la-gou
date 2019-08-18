@@ -90,7 +90,7 @@ export default {
       let result = new Array(Math.ceil(length / size))
       let index = 0
       let resIndex = 0
-      while(index < length) {
+      while (index < length) {
         result[resIndex++] = arr.slice(index, (index += size))
       }
       return result
@@ -98,20 +98,26 @@ export default {
     getCityLists () {
       axiox.get('citylists.json').then((respons) => {
         let cityLists = respons.data
-        let hotCity = [], cityLists1 = [],  cityLists2 = [], cityLists4 = [], cityLists3 = [], cityLists5 = [], cityLists6 = []
+        let hotCity = []
+        let cityLists1 = []
+        let cityLists2 = []
+        let cityLists4 = []
+        let cityLists3 = []
+        let cityLists5 = []
+        let cityLists6 = []
         for (let i = 0; i < cityLists.length; i++) {
           if (cityLists[i].hot) {
             hotCity.push(cityLists[i])
           }
-          if (cityLists[i].code.toUpperCase() <= "F") {
+          if (cityLists[i].code.toUpperCase() <= 'F') {
             cityLists1.push(cityLists[i])
-          } else if (cityLists[i].code.toUpperCase() <= "J") {
+          } else if (cityLists[i].code.toUpperCase() <= 'J') {
             cityLists2.push(cityLists[i])
-          } else if (cityLists[i].code.toUpperCase() <= "N") {
+          } else if (cityLists[i].code.toUpperCase() <= 'N') {
             cityLists3.push(cityLists[i])
-          } else if (cityLists[i].code.toUpperCase() <= "R") {
+          } else if (cityLists[i].code.toUpperCase() <= 'R') {
             cityLists4.push(cityLists[i])
-          } else if (cityLists[i].code.toUpperCase() <= "V") {
+          } else if (cityLists[i].code.toUpperCase() <= 'V') {
             cityLists5.push(cityLists[i])
           } else {
             cityLists6.push(cityLists[i])
