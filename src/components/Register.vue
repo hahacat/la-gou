@@ -7,7 +7,7 @@
     <form action="" method="post" class="form_body user-form">
       <div class="phone-wrapper">
         <span class="area_code" v-text="defaultCode" @click="selectCode"></span>
-        <input type="text" placeholder="请输入常用手机号" class="user-input user-name">
+        <input type="text" placeholder="请输入常用手机号" class="user-input user-name" v-model="telNumber" @blur="checkoutTel">
       </div>
       <div class="area_code_list" v-show="ifCodeListShow">
         <dl class="list">
@@ -16,10 +16,10 @@
         </dl>
       </div>
       <div class="phone-wrapper code-wrapper">
-        <input type="text" placeholder="请输入收到的验证码" class="user-input user-password">
-        <input type="button" value="获取验证码" class="get-code">
+        <input type="text" placeholder="请输入收到的验证码" class="user-input user-password" v-model="identifyingCode">
+        <input type="button" value="获取验证码" class="get-code" @click="getIdentifyingCode">
       </div>
-      <input type="submit" value="注册" class="user-submit">
+      <input type="button" value="注册" class="user-submit">
     </form>
     <div class="change-login">
       <span class="text">注册拉勾代表你已同意</span>
@@ -36,7 +36,9 @@ export default {
     return {
       codeLists: [],
       ifCodeListShow: false,
-      defaultCode: '0086'
+      defaultCode: '0086',
+      telNumber: '',
+      identifyingCode: ''
     }
   },
   created () {
@@ -45,7 +47,6 @@ export default {
   methods: {
     getCodeLists () {
       axios.get('/telcode.json').then((response) => {
-        console.log(response.data)
         this.codeLists = response.data
       })
     },
@@ -55,6 +56,14 @@ export default {
     changeCode (code) {
       this.ifCodeListShow = false
       this.defaultCode = code
+    },
+    getIdentifyingCode () {
+      let random = Math.floor(Math.random() * 10000 + 1)
+      this.identifyingCode = (Array(4).join(0) + random).slice(-4)
+    },
+    checkoutTel () {
+      var reg = /^1{1}\d{10}/
+      // this.telNumber 
     }
   }
 }
