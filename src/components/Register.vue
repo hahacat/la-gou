@@ -7,7 +7,7 @@
     <form action="" method="post" class="form_body user-form">
       <div class="phone-wrapper">
         <span class="area_code" v-text="defaultCode" @click="selectCode"></span>
-        <input type="text" placeholder="请输入常用手机号" class="user-input user-name" v-model="telNumber" @blur="checkoutTel">
+        <input type="text" placeholder="请输入常用手机号" class="user-input user-name" v-model="telNumber" @blur="checkoutTel" :class="telClass">
       </div>
       <div class="area_code_list" v-show="ifCodeListShow">
         <dl class="list">
@@ -16,10 +16,10 @@
         </dl>
       </div>
       <div class="phone-wrapper code-wrapper">
-        <input type="text" placeholder="请输入收到的验证码" class="user-input user-password" v-model="identifyingCode">
+        <input type="text" placeholder="请输入收到的验证码" class="user-input user-password" v-model="identifyingCode" :class="idenClass">
         <input type="button" value="获取验证码" class="get-code" @click="getIdentifyingCode">
       </div>
-      <input type="button" value="注册" class="user-submit">
+      <input type="button" value="注册" class="user-submit" @click="regist">
     </form>
     <div class="change-login">
       <span class="text">注册拉勾代表你已同意</span>
@@ -38,7 +38,10 @@ export default {
       ifCodeListShow: false,
       defaultCode: '0086',
       telNumber: '',
-      identifyingCode: ''
+      identifyingCode: '',
+      rightIdentifyingCode: '',
+      telClass: '',
+      idenClass: ''
     }
   },
   created () {
@@ -58,12 +61,32 @@ export default {
       this.defaultCode = code
     },
     getIdentifyingCode () {
-      let random = Math.floor(Math.random() * 10000 + 1)
-      this.identifyingCode = (Array(4).join(0) + random).slice(-4)
+      if (this.checkoutTel()) {
+        let random = Math.floor(Math.random() * 10000 + 1)
+        this.rightIdentifyingCode = (Array(4).join(0) + random).slice(-4)  
+      }
     },
     checkoutTel () {
-      var reg = /^1{1}\d{10}/
-      // this.telNumber 
+      var reg = /^1(3|5|7|8)\d{9}/
+      if (!reg.test(this.telNumber)) {
+        this.telClass = 'error'
+      } else {
+        this.telClass = ''
+      }
+      return reg.test(this.telNumber)
+    },
+    checkoutIden () {
+      if (this.identifyingCode === this.rightIdentifyingCode) {
+        this.idenClass = ''
+      } else {
+        this.idenClass = 'error'
+      }
+      return this.identifyingCode === this.rightIdentifyingCode
+    },
+    regist () {
+      if (this.checkoutTel() && this.checkoutIden()) {
+        localStorage.setItem('tel', [this.telNumber, this.rightIdentifyingCode] )
+      }
     }
   }
 }
@@ -171,6 +194,12 @@ export default {
           border: none;
           font-size: 0.18rem;
           color: #333;
+        }
+        .error {
+          border-bottom: 1px solid #f00;
+        }
+        .error::placeholder {
+          color: #f00;
         }
       }
       .code-wrapper {

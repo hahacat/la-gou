@@ -5,9 +5,9 @@
       <router-link to="/register" class="to-reg">注册</router-link>
     </header>
     <form action="" method="post" class="form_body user-form">
-      <input type="text" placeholder="请输入已验证的手机号或邮箱" class="user-input user-name">
-      <input type="text" placeholder="请输入密码" class="user-input user-password">
-      <input type="submit" value="登录" class="user-submit">
+      <input type="text" placeholder="请输入已验证的手机号或邮箱" class="user-input user-name" v-model="username">
+      <input type="text" placeholder="请输入密码" class="user-input user-password" v-model="password">
+      <input type="button" value="登录" class="user-submit" @click="login">
     </form>
     <div class="change-login">
       <span class="text">手机号登录</span>
@@ -17,7 +17,40 @@
 
 <script>
 export default {
-  name: 'login'
+  name: 'login',
+  data () {
+    return {
+      username: '',
+      password: '',
+      userClass: '',
+      passClass: ''
+    }
+  },
+  methods: {
+    checkoutTel () {
+      let arr = localStorage.getItem('tel').split(',')
+      if (this.username === arr[0]) {
+        this.userClass = ''
+      } else {
+        this.userClass = 'error'
+      }
+      return this.username === arr[0]
+    },
+    checkoutIden () {
+      let arr = localStorage.getItem('tel').split(',')
+      if (this.password === arr[1]) {
+        this.idenClass = ''
+      } else {
+        this.idenClass = 'error'
+      }
+      return this.password === arr[1]
+    },
+    login () {
+      if (this.checkoutTel() && this.checkoutIden()) {
+        this.$store.commit('login')
+      }
+    }
+  }
 }
 </script>
 
@@ -77,6 +110,12 @@ export default {
       }
       .user-password {
         margin-bottom: 0.45rem;
+      }
+      .error {
+        border-bottom: 1px solid #f00;
+      }
+      .error::placeholder {
+        color: #f00;
       }
       .user-submit {
         height: 0.44rem;
