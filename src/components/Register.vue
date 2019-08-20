@@ -65,6 +65,7 @@ export default {
         let random = Math.floor(Math.random() * 10000 + 1)
         this.rightIdentifyingCode = (Array(4).join(0) + random).slice(-4)  
       }
+      console.log(this.rightIdentifyingCode)
     },
     checkoutTel () {
       var reg = /^1(3|5|7|8)\d{9}/
@@ -85,6 +86,7 @@ export default {
     },
     regist () {
       if (this.checkoutTel() && this.checkoutIden()) {
+        console.log('success')
         localStorage.setItem('tel', [this.telNumber, this.rightIdentifyingCode] )
       }
     }

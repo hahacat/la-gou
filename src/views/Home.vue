@@ -33,7 +33,7 @@ export default {
     }
   },
   created () {
-    console.log(this.isLogin)
+    // console.log(this.isLogin)
   },
   components: {
     HelloWorld

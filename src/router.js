@@ -37,6 +37,10 @@ export default new Router({
     {
       path: '/register',
       component: () => import('./components/Register.vue')
+    },
+    {
+      path: '/mine/delivery',
+      component: () => import('./components/mine/Delivery.vue')
     }
   ]
 })

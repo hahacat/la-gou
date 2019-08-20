@@ -48,6 +48,7 @@ export default {
     login () {
       if (this.checkoutTel() && this.checkoutIden()) {
         this.$store.commit('login')
+        this.$router.push({path: '/'})
       }
     }
   }

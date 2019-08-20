@@ -12,12 +12,12 @@
         <router-link to="/login" class="loginbut" >登录/注册</router-link>
       </div>
       <div class="buttons">
-        <a href="javascript:;" class="button">投递</a>
+        <a href="javascript:;" class="button" @click="gotoDelivery">投递</a>
         <a href="javascript:;" class="button">面试</a>
         <a href="javascript:;" class="button">邀约</a>
         <a href="javascript:;" class="button">收藏</a>
       </div>
-      <a href="javascript:;" class="logout" v-show="isLogin">退出登录</a>
+      <a href="javascript:;" class="logout" v-show="isLogin" @click="logout">退出登录</a>
     </div>
   </div>
 </template>
@@ -31,6 +31,20 @@ export default {
   computed: {
     isLogin () {
       return this.$store.state.isLogin
+    }
+  },
+  methods: {
+    logout () {
+      this.$store.commit('logout')
+      this.$router.push({path: '/'})
+    },
+    gotoDelivery () {
+      if (this.isLogin) {
+        console.log('aaaaaa')
+        this.$router.push({path: '/mine/delivery'})
+      } else {
+        this.$router.push({path: '/'})
+      }
     }
   }
 }
